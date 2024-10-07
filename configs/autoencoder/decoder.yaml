@@ -1,0 +1,35 @@
+info: "decoder for low2high"
+model:
+  base_learning_rate: 4.5e-5
+  num_epochs: 1000 
+  batch_size: 16
+  num_workers: 12
+  distributed: True
+  save_dir: "xxx"
+  save_period: 1  
+  log_period: 200
+  params:
+    monitor: "val/rec_loss"
+    embed_dim: 8
+    ddconfig:
+      double_z: True
+      z_channels: 8
+      resolution: 512
+      in_channels: 32
+      out_ch: 32
+      ch: 128
+      ch_mult: [1,2,4]  # num_down = len(ch_mult)-1 
+      num_res_blocks: 2
+      attn_resolutions: [ ]
+      dropout: 0.0
+  ddconfig-l2h:
+    double_z: True
+    z_channels: 8
+    resolution: 512
+    in_channels: 32
+    out_ch: 224
+    ch: 128
+    ch_mult: [1,2,4]  # num_down = len(ch_mult)-1 
+    num_res_blocks: 2
+    attn_resolutions: [ ]
+    dropout: 0.0
